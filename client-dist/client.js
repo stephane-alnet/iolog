@@ -3323,24 +3323,32 @@
   var start = (options = {}) => {
     const socket = lookup2(options);
     const buffer = [];
+    let running = true;
     const flush = () => {
       if (!socket.connected) {
+        if (running) {
+          setTimeout(flush, 500);
+        }
         return;
       }
       if (buffer.length <= 0) {
         return;
       }
-      const [ev, meta, data] = buffer[0];
-      socket.emit(ev, meta, data, (response) => {
-        if (response) {
-          buffer.shift();
+      const rec = buffer.shift();
+      const [ev, meta, data] = rec;
+      try {
+        socket.emit(ev, meta, data, (response) => {
+          if (!response) {
+            buffer.unshift(rec);
+          }
           flush();
-        }
-      });
+        });
+      } catch {
+        buffer.unshift(rec);
+      }
     };
     socket.on("connect", flush);
     socket.on("reconnect", flush);
-    const timer = setInterval(flush, 100);
     return {
       push: (ev, x) => {
         const time = Date.now();
@@ -3350,8 +3358,8 @@
       },
       // Probably only needed on Node and in tests
       stop: () => {
-        setTimeout(() => socket.close(), 200);
-        clearInterval(timer);
+        running = false;
+        setTimeout(() => socket.close(), 500);
       }
     };
   };
