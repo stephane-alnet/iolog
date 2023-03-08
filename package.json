@@ -1,0 +1,21 @@
+{
+  "name": "iolog",
+  "version": "1.0.0",
+  "description": "nginx.conf",
+  "browser": "client-dist/client.js",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "esbuild --bundle --outdir=client-dist src/client.mjs && esbuild --bundle --outdir=dist --platform=node src/server.mjs",
+    "start": "node dist/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.11",
+    "fast-safe-stringify": "^2.1.1",
+    "socket.io-client": "^4.6.1"
+  }
+}
