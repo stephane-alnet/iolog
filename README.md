@@ -12,7 +12,7 @@ node dist/server.js
 # Client
 
 ```
-<script src="https://github.com/stephane-alnet/iolog/.."></script>
+<script src="https://raw.githubusercontent.com/stephane-alnet/iolog/main/client-dist/client.js"></script>
 ```
 
 # Example usage
