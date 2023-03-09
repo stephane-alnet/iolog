@@ -34,3 +34,13 @@ server {
     # Other `location` statements here.
 }
 ```
+
+# Advanced usage
+
+`dist/client-lib.js` offers the functionality of the project for integration in
+a custom scenario, for example if you need to override the server's location.
+
+```
+import { overrideConsole, start } from '@stephanealnet-signalwire/iolog/dist/client-lib.js';
+overrideConsole(start("https://logger.example.com"))
+```
