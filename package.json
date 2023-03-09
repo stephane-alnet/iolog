@@ -1,5 +1,5 @@
 {
-  "name": "iolog",
+  "name": "@stephanealnet-signalwire/iolog",
   "version": "1.0.0",
   "description": "nginx.conf",
   "browser": "client-dist/client.js",
