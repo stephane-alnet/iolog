@@ -3292,7 +3292,7 @@
     connect: lookup2
   });
 
-  // src/client.mjs
+  // src/client-lib.mjs
   var import_fast_safe_stringify = __toESM(require_fast_safe_stringify(), 1);
   var theGlobal = globalThis;
   if (!theGlobal)
@@ -3363,6 +3363,8 @@
       }
     };
   };
+
+  // src/client.mjs
   if (theGlobal.window) {
     overrideConsole(start());
   }
