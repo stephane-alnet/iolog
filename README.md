@@ -13,11 +13,10 @@ Note: there is no need to `npm install`, you only need a working, recent Node.js
 
 # Client
 
-Copy `client-dist/client.js` in an appropriate location so that it can be served
-and included in your HTML page:
+Add to the top of your HTML page's `head` section
 
 ```
-<script src="client.js"></script>
+<script src="https://unpkg.com/@stephanealnet-signalwire/iolog/client-dist/client.js"></script>
 ```
 
 It will automatically capture `console` and send it over the network to the
